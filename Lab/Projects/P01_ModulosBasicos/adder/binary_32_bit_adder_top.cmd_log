@@ -1,0 +1,6 @@
+xst -intstyle ise -ifn "C:/PROJECTS/XILINX/adder/binary_32_bit_adder_top.xst" -ofn "C:/PROJECTS/XILINX/adder/binary_32_bit_adder_top.syr" 
+xst -intstyle ise -ifn "C:/PROJECTS/XILINX/adder/binary_32_bit_adder_top.xst" -ofn "C:/PROJECTS/XILINX/adder/binary_32_bit_adder_top.syr" 
+xst -intstyle ise -ifn "C:/PROJECTS/XILINX/adder/binary_32_bit_adder_top.xst" -ofn "C:/PROJECTS/XILINX/adder/binary_32_bit_adder_top.syr" 
+xst -intstyle ise -ifn "C:/PROJECTS/XILINX/adder/binary_32_bit_adder_top.xst" -ofn "C:/PROJECTS/XILINX/adder/binary_32_bit_adder_top.syr" 
+xst -intstyle ise -ifn "C:/PROJECTS/XILINX/adder/binary_32_bit_adder_top.xst" -ofn "C:/PROJECTS/XILINX/adder/binary_32_bit_adder_top.syr" 
+xst -intstyle ise -ifn "C:/PROJECTS/XILINX/adder/binary_32_bit_adder_top.xst" -ofn "C:/PROJECTS/XILINX/adder/binary_32_bit_adder_top.syr" 

@@ -1,0 +1,7 @@
+[Inputs]
+S
+=D1[4:0]=
+=D2[4:0]=
+[Outputs]
+=Q[4:0]=
+[BiDir]

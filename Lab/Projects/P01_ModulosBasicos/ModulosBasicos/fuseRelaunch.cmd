@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "secureip" -o "E:/P01_ModulosBasicos/ModulosBasicos/ADDER_TB_isim_beh.exe" -prj "E:/P01_ModulosBasicos/ModulosBasicos/ADDER_TB_beh.prj" "ADDER_TB" 

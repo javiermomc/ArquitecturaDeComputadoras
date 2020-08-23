@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<DeviceUsageSummary rev="4">
+<DesignStatistics TimeStamp="Tue Aug 18 15:42:12 2020"><group name="NetStatistics">
+<item name="NumNets_Active" rev="4">
+<attrib name="value" value="80"/></item>
+<item name="NumNets_Gnd" rev="4">
+<attrib name="value" value="1"/></item>
+<item name="NumNodesOfType_Active_DOUBLE" rev="4">
+<attrib name="value" value="35"/></item>
+<item name="NumNodesOfType_Active_GENERIC" rev="4">
+<attrib name="value" value="78"/></item>
+<item name="NumNodesOfType_Active_IOBIN2OUT" rev="4">
+<attrib name="value" value="52"/></item>
+<item name="NumNodesOfType_Active_IOBOUTPUT" rev="4">
+<attrib name="value" value="52"/></item>
+<item name="NumNodesOfType_Active_OUTBOUND" rev="4">
+<attrib name="value" value="52"/></item>
+<item name="NumNodesOfType_Active_PADINPUT" rev="4">
+<attrib name="value" value="26"/></item>
+<item name="NumNodesOfType_Active_PADOUTPUT" rev="4">
+<attrib name="value" value="26"/></item>
+<item name="NumNodesOfType_Active_PINFEED" rev="4">
+<attrib name="value" value="26"/></item>
+<item name="NumNodesOfType_Active_QUAD" rev="4">
+<attrib name="value" value="95"/></item>
+<item name="NumNodesOfType_Active_SINGLE" rev="4">
+<attrib name="value" value="25"/></item>
+<item name="NumNodesOfType_Gnd_DOUBLE" rev="4">
+<attrib name="value" value="2"/></item>
+<item name="NumNodesOfType_Gnd_GENERIC" rev="4">
+<attrib name="value" value="2"/></item>
+<item name="NumNodesOfType_Gnd_IOBIN2OUT" rev="4">
+<attrib name="value" value="2"/></item>
+<item name="NumNodesOfType_Gnd_IOBOUTPUT" rev="4">
+<attrib name="value" value="2"/></item>
+<item name="NumNodesOfType_Gnd_OUTBOUND" rev="4">
+<attrib name="value" value="2"/></item>
+<item name="NumNodesOfType_Gnd_OUTPUT" rev="4">
+<attrib name="value" value="4"/></item>
+<item name="NumNodesOfType_Gnd_PADINPUT" rev="4">
+<attrib name="value" value="2"/></item>
+<item name="NumNodesOfType_Gnd_PINFEED" rev="4">
+<attrib name="value" value="2"/></item>
+</group>
+<group name="SiteStatistics">
+<item name="IOB-IOBM" rev="4">
+<attrib name="value" value="27"/></item>
+<item name="IOB-IOBS" rev="4">
+<attrib name="value" value="27"/></item>
+</group>
+<group name="MiscellaneousStatistics">
+<item name="AGG_BONDED_IO" rev="3">
+<attrib name="value" value="54"/></item>
+<item name="AGG_IO" rev="3">
+<attrib name="value" value="54"/></item>
+<item name="NUM_BONDED_IOB" rev="3">
+<attrib name="value" value="54"/></item>
+</group>
+</DesignStatistics>
+<DeviceUsage TimeStamp="Tue Aug 18 15:42:12 2020"><group name="SiteSummary">
+<item name="IOB" rev="4">
+<attrib name="total" value="1000000"/><attrib name="used" value="54"/></item>
+<item name="IOB_IMUX" rev="4">
+<attrib name="total" value="1000000"/><attrib name="used" value="26"/></item>
+<item name="IOB_INBUF" rev="4">
+<attrib name="total" value="1000000"/><attrib name="used" value="26"/></item>
+<item name="IOB_OUTBUF" rev="4">
+<attrib name="total" value="1000000"/><attrib name="used" value="28"/></item>
+<item name="PAD" rev="4">
+<attrib name="total" value="1000000"/><attrib name="used" value="54"/></item>
+</group>
+</DeviceUsage>
+<ReportConfigData TimeStamp="Tue Aug 18 15:42:12 2020"><group name="IOB_OUTBUF">
+<item name="DRIVEATTRBOX" rev="4">
+<attrib name="12" value="28"/></item>
+<item name="SLEW" rev="4">
+<attrib name="SLOW" value="28"/></item>
+<item name="SUSPEND" rev="4">
+<attrib name="3STATE" value="28"/></item>
+</group>
+</ReportConfigData>
+<ReportPinData TimeStamp="Tue Aug 18 15:42:12 2020"><group name="IOB_OUTBUF">
+<item name="IN" rev="4">
+<attrib name="value" value="28"/></item>
+<item name="OUT" rev="4">
+<attrib name="value" value="28"/></item>
+</group>
+<group name="PAD">
+<item name="PAD" rev="4">
+<attrib name="value" value="54"/></item>
+</group>
+<group name="IOB_INBUF">
+<item name="OUT" rev="4">
+<attrib name="value" value="26"/></item>
+<item name="PAD" rev="4">
+<attrib name="value" value="26"/></item>
+</group>
+<group name="IOB_IMUX">
+<item name="I" rev="4">
+<attrib name="value" value="26"/></item>
+<item name="OUT" rev="4">
+<attrib name="value" value="26"/></item>
+</group>
+<group name="IOB">
+<item name="I" rev="4">
+<attrib name="value" value="26"/></item>
+<item name="O" rev="4">
+<attrib name="value" value="28"/></item>
+<item name="PAD" rev="4">
+<attrib name="value" value="54"/></item>
+</group>
+</ReportPinData>
+<CmdHistory>
+</CmdHistory>
+</DeviceUsageSummary>
