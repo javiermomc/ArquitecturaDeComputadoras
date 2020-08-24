@@ -1,2 +1,2 @@
-vhdl isim_temp "ADDER.vhd"
-vhdl isim_temp "ADDER_TB.vhd"
+vhdl isim_temp "Adder.vhd"
+vhdl isim_temp "Adder_tb.vhd"

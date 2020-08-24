@@ -1,13 +1,13 @@
-Release 14.7 par P.20131013 (nt)
+Release 14.7 par P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-TEC::  Sun Aug 23 15:51:35 2020
+JAVIERJR-PC::  Mon Aug 24 15:48:19 2020
 
 par -w -intstyle ise -ol high -mt off adder_map.ncd adder.ncd adder.pcf 
 
 
 Constraints file: adder.pcf.
-Loading device for application Rf_Device from file '6slx16.nph' in environment C:\Xilinx\14.7\ISE_DS\ISE\.
+Loading device for application Rf_Device from file '6slx16.nph' in environment D:\Xilinx\14.7\ISE_DS\ISE\.
    "adder" is an NCD, version 3.2, device xc6slx16, package csg324, speed -3
 
 Initializing temperature to 85.000 Celsius. (default - Range: 0.000 to 85.000 Celsius)
@@ -81,35 +81,35 @@ Specific Feature Utilization:
 Overall effort level (-ol):   High 
 Router effort level (-rl):    High 
 
-Starting initial Timing Analysis.  REAL time: 4 secs 
-Finished initial Timing Analysis.  REAL time: 4 secs 
+Starting initial Timing Analysis.  REAL time: 3 secs 
+Finished initial Timing Analysis.  REAL time: 3 secs 
 
 Starting Router
 
 
-Phase  1  : 127 unrouted;      REAL time: 5 secs 
+Phase  1  : 127 unrouted;      REAL time: 4 secs 
 
-Phase  2  : 127 unrouted;      REAL time: 5 secs 
+Phase  2  : 127 unrouted;      REAL time: 4 secs 
 
-Phase  3  : 86 unrouted;      REAL time: 6 secs 
+Phase  3  : 86 unrouted;      REAL time: 5 secs 
 
-Phase  4  : 86 unrouted; (Par is working to improve performance)     REAL time: 7 secs 
+Phase  4  : 86 unrouted; (Par is working to improve performance)     REAL time: 6 secs 
 
 Updating file: adder.ncd with current fully routed design.
 
-Phase  5  : 0 unrouted; (Par is working to improve performance)     REAL time: 7 secs 
+Phase  5  : 0 unrouted; (Par is working to improve performance)     REAL time: 6 secs 
 
-Phase  6  : 0 unrouted; (Par is working to improve performance)     REAL time: 7 secs 
+Phase  6  : 0 unrouted; (Par is working to improve performance)     REAL time: 6 secs 
 
-Phase  7  : 0 unrouted; (Par is working to improve performance)     REAL time: 7 secs 
+Phase  7  : 0 unrouted; (Par is working to improve performance)     REAL time: 6 secs 
 
-Phase  8  : 0 unrouted; (Par is working to improve performance)     REAL time: 7 secs 
+Phase  8  : 0 unrouted; (Par is working to improve performance)     REAL time: 6 secs 
 
-Phase  9  : 0 unrouted; (Par is working to improve performance)     REAL time: 7 secs 
+Phase  9  : 0 unrouted; (Par is working to improve performance)     REAL time: 6 secs 
 
-Phase 10  : 0 unrouted; (Par is working to improve performance)     REAL time: 7 secs 
-Total REAL time to Router completion: 7 secs 
-Total CPU time to Router completion: 6 secs 
+Phase 10  : 0 unrouted; (Par is working to improve performance)     REAL time: 6 secs 
+Total REAL time to Router completion: 6 secs 
+Total CPU time to Router completion: 5 secs 
 
 Partition Implementation Status
 -------------------------------
@@ -128,10 +128,10 @@ Generating Pad Report.
 
 All signals are completely routed.
 
-Total REAL time to PAR completion: 16 secs 
-Total CPU time to PAR completion: 7 secs 
+Total REAL time to PAR completion: 7 secs 
+Total CPU time to PAR completion: 5 secs 
 
-Peak Memory Usage:  200 MB
+Peak Memory Usage:  4457 MB
 
 Placer: Placement generated during map.
 Routing: Completed - No errors found.

@@ -11,3 +11,11 @@ xst -intstyle ise -ifn "E:/P01_ModulosBasicos/ModulosBasicos/adder.xst" -ofn "E:
 ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc6slx16-csg324-3 adder.ngc adder.ngd  
 map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o adder_map.ncd adder.ngd adder.pcf 
 par -w -intstyle ise -ol high -mt off adder_map.ncd adder.ncd adder.pcf 
+vhdtdtfi -lib work Adder.vhd -prj ModulosBasicos -o adder.spl -module adder -template D:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 adder.spl D:/JavierJr/Documents/ISD/AgoDic20/ArquitecturaDeComputadoras/Lab/Projects/P01_ModulosBasicos/ModulosBasicos/adder.sym 
+xst -intstyle ise -ifn "D:/JavierJr/Documents/ISD/AgoDic20/ArquitecturaDeComputadoras/Lab/Projects/P01_ModulosBasicos/ModulosBasicos/adder.xst" -ofn "D:/JavierJr/Documents/ISD/AgoDic20/ArquitecturaDeComputadoras/Lab/Projects/P01_ModulosBasicos/ModulosBasicos/adder.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc6slx16-csg324-3 adder.ngc adder.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o adder_map.ncd adder.ngd adder.pcf 
+par -w -intstyle ise -ol high -mt off adder_map.ncd adder.ncd adder.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml adder.twx adder.ncd -o adder.twr adder.pcf 
+bitgen -intstyle ise -f adder.ut adder.ncd 

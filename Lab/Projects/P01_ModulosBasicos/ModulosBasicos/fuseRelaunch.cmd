@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "secureip" -o "E:/P01_ModulosBasicos/ModulosBasicos/ADDER_TB_isim_beh.exe" -prj "E:/P01_ModulosBasicos/ModulosBasicos/ADDER_TB_beh.prj" "ADDER_TB" 
+-intstyle "ise" -incremental -lib "secureip" -o "D:/JavierJr/Documents/ISD/AgoDic20/ArquitecturaDeComputadoras/Lab/Projects/P01_ModulosBasicos/ModulosBasicos/Shifter_tb_isim_beh.exe" -prj "D:/JavierJr/Documents/ISD/AgoDic20/ArquitecturaDeComputadoras/Lab/Projects/P01_ModulosBasicos/ModulosBasicos/Shifter_tb_beh.prj" "work.Shifter_tb" 
