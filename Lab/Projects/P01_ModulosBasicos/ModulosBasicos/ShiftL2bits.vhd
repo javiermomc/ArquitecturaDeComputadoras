@@ -19,6 +19,8 @@
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -30,15 +32,15 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity ShiftL2bits is
-    Port ( D : in  STD_LOGIC_VECTOR (25 downto 0);
-           Q : out  STD_LOGIC_VECTOR (27 downto 0));
+    Port ( D : in STD_LOGIC_VECTOR (25 downto 0);
+           Q : out STD_LOGIC_VECTOR (27 downto 0));
 end ShiftL2bits;
 
 architecture Behavioral of ShiftL2bits is
 
 begin
 
-	D <= Q & "00";
+	Q <= D & "00";
 
 end Behavioral;
 

@@ -20,7 +20,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
+use IEEE.STD_LOGIC_SIGNED.ALL;
 
 entity extender is
     Port ( A : in std_logic_vector (15 downto 0) := "1111000000001111";
@@ -29,9 +29,8 @@ end extender;
 
 architecture behavorial of extender is
 begin
-	extend: process(A) is
-	begin
-		B <= std_logic_vector(resize(signed(A), B'length));
-	 end process;
+
+	B <= std_logic_vector(resize(signed(A), B'length));
+	
 end architecture;
 

@@ -1,6 +1,0 @@
-[Inputs]
-=NUM1[31:0]=
-=NUM2[31:0]=
-[Outputs]
-=SUM[31:0]=
-[BiDir]

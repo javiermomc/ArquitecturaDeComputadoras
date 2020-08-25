@@ -1,6 +1,0 @@
-xst -intstyle ise -ifn "D:/JavierJr/Documents/ISD/AgoDic20/ArquitecturaDeComputadoras/Lab/Projects/P01_ModulosBasicos/ModulosBasicos/Shifter.xst" -ofn "D:/JavierJr/Documents/ISD/AgoDic20/ArquitecturaDeComputadoras/Lab/Projects/P01_ModulosBasicos/ModulosBasicos/Shifter.syr" 
-ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc6slx16-csg324-3 Shifter.ngc Shifter.ngd  
-map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o Shifter_map.ncd Shifter.ngd Shifter.pcf 
-par -w -intstyle ise -ol high -mt off Shifter_map.ncd Shifter.ncd Shifter.pcf 
-trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml Shifter.twx Shifter.ncd -o Shifter.twr Shifter.pcf 
-bitgen -intstyle ise -f Shifter.ut Shifter.ncd 

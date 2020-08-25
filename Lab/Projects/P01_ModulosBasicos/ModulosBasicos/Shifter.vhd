@@ -37,13 +37,9 @@ entity Shifter is
 end Shifter;
 
 architecture Behavioral of Shifter is
-signal shift : unsigned (31 downto 0) := (others => '0');
-
 begin
-	process (VARIN, shift) is
-	begin
-		shift <= shift_left(unsigned(VARIN), 2);
-		VAROUT <= std_logic_vector(shift);
-	end process;
+
+	VAROUT <= VARIN(29 downto 0) & "00";
+	
 end Behavioral;
 

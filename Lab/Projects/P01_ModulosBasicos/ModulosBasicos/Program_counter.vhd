@@ -40,14 +40,8 @@ architecture Behavioral of Program_counter is
 
 begin
 
-	process(RESET, CLK, D)
-	begin
-		if RESET = '1' then
-			Q <= (others => '0');
-		elsif falling_edge(CLK) then
-			Q <= D;
-		end if;
-	end process;
+	Q <= (others => '0') when RESET = '1' else
+		D when falling_edge(CLK);
 
 end Behavioral;
 

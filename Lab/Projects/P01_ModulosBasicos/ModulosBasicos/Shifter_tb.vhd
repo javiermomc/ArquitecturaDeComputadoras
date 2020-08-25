@@ -69,8 +69,10 @@ BEGIN
    stim_proc: process
    begin		
       -- hold reset state for 100 ns.
+		VARIN <= "11111111111111111111111111111111";
       wait for 100 ns;
 		VARIN <= "00000000000000000000000000001111";
+		wait;
    end process;
 
 END;

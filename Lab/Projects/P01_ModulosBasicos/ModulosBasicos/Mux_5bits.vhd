@@ -40,14 +40,7 @@ architecture Behavioral of MUX_5bits is
 
 begin
 
-	selector: process(S, D1, D2)
-	begin
-		if S = '1' then
-			Q <= D1;
-		else
-			Q <= D2;
-		end if;
-	end process selector;
-
+	Q <= D1 when S = '1' else D2;
+	
 end Behavioral;
 

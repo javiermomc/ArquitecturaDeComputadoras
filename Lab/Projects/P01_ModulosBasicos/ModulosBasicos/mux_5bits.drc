@@ -1,8 +1,0 @@
-Release 14.7 Drc P.20131013 (nt64)
-Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
-
-Tue Aug 18 16:48:07 2020
-
-drc -z MUX_5bits.ncd MUX_5bits.pcf
-
-DRC detected 0 errors and 0 warnings.
