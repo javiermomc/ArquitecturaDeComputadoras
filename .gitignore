@@ -46,7 +46,7 @@ trce.xmsgs
 *.bit
 *.bgn
 *.ut
-webtalk.log
+*.log
 *.html
 bitgen.xmsgs
 *_guide.ncd
@@ -54,3 +54,12 @@ work.vdbl
 work.vdbx
 *.gise
 pn_parser.xmsgs
+xilinxsim.ini
+*_stx_beh.prj
+isim
+*_beh.prj
+*_isim_beh.exe
+isim.cmd
+*_isim_beh.wdb
+fuse.xmsgs
+fuseRelaunch.cmd
