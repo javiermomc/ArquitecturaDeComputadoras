@@ -2,6 +2,7 @@ Files
 Tareas
 Lab/VM
 
+*.projectmgr
 *.xreport
 *.stx
 *.xst
