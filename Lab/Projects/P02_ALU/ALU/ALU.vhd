@@ -22,11 +22,6 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
--- Uncomment the following library declaration if instantiating
--- any Xilinx primitives in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
-
 entity ALU is
     Port ( A		:	in  STD_LOGIC_VECTOR (31 DOWNTO 0);
            B 	 	:	in  STD_LOGIC_VECTOR (31 DOWNTO 0);
@@ -46,8 +41,9 @@ begin
 					A									when "011",
 					B(15 DOWNTO 0) & x"0000"	when "100",
 					A - B								when "110",
-					DL									when others;
+					DL									when "111",
+					(others => '0')				when others;
 	DL <= x"00000001" when A<B else x"00000000";
-	Zero <= '1' WHEN RES = x"00000000";
+	Zero <= '1' WHEN RES = x"00000000" else '0';
 	Result <= RES;
 end Behavioral;
