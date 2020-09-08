@@ -37,20 +37,23 @@ entity ROM is
 		word : integer := 32
 	);
 	Port	(
-	Addr : in STD_LOGIC_VECTOR(size-1 downto 0);
-	Output : out STD_LOGIC_VECTOR(word-1 downto 0)
+	READ_ADDRESS : in STD_LOGIC_VECTOR(size-1 downto 0);
+	INSTRUCTION : out STD_LOGIC_VECTOR(word-1 downto 0)
 	);
 end ROM;
 
 architecture Behavioral of ROM is
 
 	type ROM_type is array (size-1 downto 0) of STD_LOGIC_VECTOR(word-1 downto 0);
-	constant ROM : ROM_type := (x"5", x"8", x"F", x"C", 
-										 x"B", x"1", x"0", x"6", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0");
+	constant ROM : ROM_type := (
+										x"5", x"8", x"F", x"C", x"B", x"1", x"0", x"6", 
+										x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", 
+										x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", 
+										x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0");
 
 begin
 
-	Output <= ROM(conv_integer(Addr));
+	INSTRUCTION <= ROM(conv_integer(READ_ADDRESS));
 
 end Behavioral;
 
