@@ -37,7 +37,7 @@ entity RAM is
 	);
 
     Port ( ENABLE : in  STD_LOGIC;
-           ADDRESS : in  STD_LOGIC_VECTOR (size/8 downto 0);
+           ADDRESS : in  STD_LOGIC_VECTOR (size downto 0);
            CLK : in  STD_LOGIC;
            WRITE_ENABLE : in  STD_LOGIC;
            READ_ENABLE : in  STD_LOGIC;
