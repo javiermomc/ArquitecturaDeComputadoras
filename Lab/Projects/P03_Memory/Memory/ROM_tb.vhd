@@ -81,6 +81,10 @@ BEGIN
 		
 		wait for 100 ns;	
 		
+		READ_ADDRESS <= x"E";
+		
+		wait for 100 ns;
+		
 		READ_ADDRESS <= x"F";
 		
 		wait for 100 ns;	
