@@ -46,7 +46,7 @@ architecture Behavioral of ROM is
 
 	type ROM_type is array (size-1 downto 0) of STD_LOGIC_VECTOR(word-1 downto 0);
 	constant ROM : ROM_type := (x"5", x"8", x"F", x"C", 
-										 x"B", x"1", x"0", x"6");
+										 x"B", x"1", x"0", x"6", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0", x"0");
 
 begin
 
