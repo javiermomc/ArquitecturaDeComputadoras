@@ -30,19 +30,22 @@ use work.array_port.all;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity Register is
+entity Reg is
 	Port ( WriteData : in STD_LOGIC_VECTOR (31 DOWNTO 0);
 			 Enabler : in STD_LOGIC_VECTOR (31 DOWNTO 0);
-			 CLK : in STD_LOGIC);
+			 CLK : in STD_LOGIC;
+			 DataOut : out PORT32OF32);
 			 
-end Register;
+end Reg;
 
-architecture Behavioral of Register is
+architecture Behavioral of Reg is
 	signal DATA : PORT32OF32;
+begin
+	con: for i in 1 to 31 generate
 	begin
-		for i in '0' to '31' generate
-      begin
-         DATA(i) <= WriteData when Enabler(i) = '1' AND i > '0' AND rising_edge(CLK);
+		DATA(i) <= WriteData when Enabler(i) = '1' AND rising_edge(CLK);
    end generate;
+	DATA(0) <= (others => '0');
+	DataOut <= DATA;
 end Behavioral;
 

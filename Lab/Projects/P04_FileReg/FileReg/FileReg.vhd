@@ -44,11 +44,25 @@ end FileReg;
 architecture Behavioral of FileReg is
 
 	signal MUXIN : PORT32OF32;
+	signal ENBus : STD_LOGIC_VECTOR(31 downto 0);
 	
 	component MUX32to1
 	port ( DataIn : in  PORT32OF32;
            ReadReg : in  STD_LOGIC_VECTOR (4 downto 0);
            DataOut : out  STD_LOGIC_VECTOR (31 downto 0));
+	end component;
+	
+	component Reg
+	port ( WriteData : in STD_LOGIC_VECTOR (31 DOWNTO 0);
+			 Enabler : in STD_LOGIC_VECTOR (31 DOWNTO 0);
+			 CLK : in STD_LOGIC;
+			 DataOut : out PORT32OF32);
+	end component;
+	
+	component Decoder
+	port ( WriteReg : in  STD_LOGIC_VECTOR (4 downto 0);
+			 RegWrite : in STD_LOGIC;
+			 Enabler : out  STD_LOGIC_VECTOR (31 downto 0));
 	end component;
 
 begin
@@ -65,6 +79,21 @@ begin
 		DataOut => ReadOut2,
 		ReadReg => ReadReg2,
 		DataIn => MUXIN
+	);
+	
+	R: Reg
+	port map(
+		WriteData => WriteData,
+		Enabler => EnBus,
+		CLK => CLK,
+		DataOut => MUXIN
+	);
+	
+	D: Decoder
+	port map( 
+		WriteReg => WriteReg,
+		RegWrite => RegWrite,
+		Enabler => EnBus
 	);
 
 

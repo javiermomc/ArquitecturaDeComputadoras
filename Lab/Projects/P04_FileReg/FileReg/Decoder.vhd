@@ -19,7 +19,7 @@
 ----------------------------------------------------------------------------------
 library ieee;
 use ieee.std_logic_1164.all;	-- standard unresolved logic UX01ZWLH-
-use ieee.numeric_std.all; 
+use ieee.std_logic_unsigned.all;
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
 
@@ -37,8 +37,11 @@ end Decoder;
 
 architecture Behavioral of Decoder is
 	signal selregister : integer range 0 to 31;
+begin
+	dem: for i in 0 to 31 generate
 	begin
-		selregister <= to_integer(unsigned(WriteReg));
-		Enabler(selRegister) <= '1' when RegWrite = '1';
+		Enabler(i) <=	'1' when i = conv_integer(WriteReg) AND RegWrite = '1' else
+							'0';
+	end generate;
 end Behavioral;
 
