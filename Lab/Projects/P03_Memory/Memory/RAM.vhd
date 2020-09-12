@@ -19,7 +19,7 @@
 ----------------------------------------------------------------------------------
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.std_logic_unsigned.all;
+use IEEE.numeric_std.all;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -56,10 +56,10 @@ begin
 	begin
 		if (ENABLE = '1' and falling_edge(CLK)) then
 			if (WRITE_ENABLE = '1') then 
-					RAM(conv_integer(ADDRESS)) <= WRITE_DATA;
+					RAM(to_integer(unsigned(ADDRESS))) <= WRITE_DATA;
 					READ_DATA <= (others => '0');
 			elsif (READ_ENABLE = '1') then
-				READ_DATA <= RAM(conv_integer(ADDRESS));
+				READ_DATA <= RAM(to_integer(unsigned(ADDRESS)));
 			end if;
 		end if;
 	end process;

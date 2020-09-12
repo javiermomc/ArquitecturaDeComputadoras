@@ -19,7 +19,7 @@
 ----------------------------------------------------------------------------------
 library ieee;
 use ieee.std_logic_1164.all;	-- standard unresolved logic UX01ZWLH-
-use ieee.std_logic_unsigned.all;
+use IEEE.numeric_std.all;
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
 
@@ -40,7 +40,7 @@ architecture Behavioral of Decoder is
 begin
 	dem: for i in 0 to 31 generate
 	begin
-		Enabler(i) <=	'1' when i = conv_integer(WriteReg) AND RegWrite = '1' else
+		Enabler(i) <=	'1' when i = to_integer(unsigned(WriteReg)) AND RegWrite = '1' else
 							'0';
 	end generate;
 end Behavioral;

@@ -19,7 +19,7 @@
 ----------------------------------------------------------------------------------
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.std_logic_unsigned.all;
+use IEEE.numeric_std.all;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -53,7 +53,7 @@ architecture Behavioral of ROM is
 
 begin
 
-	INSTRUCTION <= ROM(conv_integer(READ_ADDRESS));
+	INSTRUCTION <= ROM(to_integer(unsigned(READ_ADDRESS)));
 
 end Behavioral;
 
