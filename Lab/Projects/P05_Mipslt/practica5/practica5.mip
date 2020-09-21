@@ -1,0 +1,16 @@
+practica5
+E:\P05_Mipslt\practica5\
+Objects\
+1
+E:\P05_MIPSLT\PRACTICA5\ex1.s
+0
+0
+1
+minic
+0
+0
+0
+0
+1
+objcopy.exe -O srec practica5.out practica5.srec
+80020000 start
