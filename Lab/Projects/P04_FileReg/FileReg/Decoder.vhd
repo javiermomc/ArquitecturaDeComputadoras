@@ -38,7 +38,7 @@ end Decoder;
 architecture Behavioral of Decoder is
 	signal selregister : integer range 0 to 31;
 begin
-	dem: for i in 0 to 31 generate
+	demux: for i in 0 to 31 generate
 	begin
 		Enabler(i) <=	'1' when i = to_integer(unsigned(WriteReg)) AND RegWrite = '1' else
 							'0';
