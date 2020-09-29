@@ -1,0 +1,13 @@
+P06
+E:\P06_MipsISA\P06\
+Objects\
+0
+1
+minic
+0
+0
+0
+0
+1
+objcopy.exe -O srec P06.out P06.srec
+80020000 start
