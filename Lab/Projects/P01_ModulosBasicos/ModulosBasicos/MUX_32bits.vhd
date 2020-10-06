@@ -31,7 +31,7 @@ architecture Behavioral of MUX_32bits is
 
 begin
 
-	Q <= D1 when S = '1' else D2;
+	Q <= D2 when S = '1' else D1;
 
 end Behavioral;
 
