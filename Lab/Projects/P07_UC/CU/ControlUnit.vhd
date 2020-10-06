@@ -44,11 +44,40 @@ end ControlUnit;
 
 architecture Behavioral of ControlUnit is
 
-signal outBus : STD_LOGIC_VECTOR (10 downto 0);
+signal outBus : STD_LOGIC_VECTOR (7 downto 0);
 
 begin	
 
+	with opCode select
+		outBus <= "10000001" when "000000", -- SPECIAL 
+					 "00011011" when "100011", -- LW
+					 "00000110" when "101011", -- SW
+					 "00100000" when "000100", -- BEQ
+					 "01000000" when "000010", -- J
+					 "00000011" when "001000", -- ADDI
+					 "00000011" when "001101", -- ORI
+					 "00000011" when "001111", -- LUI
+					 "00000000" when others;
 	
-
+	RegDst	<= outBus(0);
+	Jump		<= outBus(1);
+	Branch	<= outBus(2);
+	MemRead	<= outBus(3);
+	MemToReg <= outBus(4);
+	MemWrite <= outBus(5);
+	ALUSrc	<= outBus(6);
+	RegWrite <= outBus(7);
+	
+	with opCode select
+		ALUOp <= "000" when "000000", -- SPECIAL 
+					"001" when "100011", -- LW
+					"001" when "101011", -- SW
+					"001" when "000100", -- BEQ
+					"010" when "000010", -- J
+					"001" when "001000", -- ADDI
+					"001" when "001101", -- ORI
+					"001" when "001111", -- LUI
+					"000" when others;
+			
 end Behavioral;
 
