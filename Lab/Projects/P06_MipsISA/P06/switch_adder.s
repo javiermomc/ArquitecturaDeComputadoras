@@ -22,7 +22,6 @@ lui t0, 0xbfa0
 lb t1, 0x0(t0)
 nop
 andi t1, t1, 0x1
-nop
 beq $0, t1, wait
 nop
 wait2: 
@@ -30,7 +29,6 @@ lui t0, 0xbfa0
 lb t1, 0x0(t0)
 nop
 andi t1, t1, 0x1
-nop
 bne $0, t1, wait2
 nop
 jr ra
