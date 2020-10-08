@@ -1,0 +1,7 @@
+[Inputs]
+=Instruc[5:0]=
+=ALUOp[2:0]=
+[Outputs]
+Jr
+=ALUCtrl[2:0]=
+[BiDir]
