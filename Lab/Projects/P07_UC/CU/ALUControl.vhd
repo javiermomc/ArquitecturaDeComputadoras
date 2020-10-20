@@ -56,6 +56,6 @@ begin
 						Special when "000", --TIPO R
 						"101" when others; --NOTHING
 						
-	Jr <= '1' when ALUOp = "001" and Instruc = "000000";
+	Jr <= '1' when ALUOp = "001" and Instruc = "001000" else '0';
 end Behavioral;
 
