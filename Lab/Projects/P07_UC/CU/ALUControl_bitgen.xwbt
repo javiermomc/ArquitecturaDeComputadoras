@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=E:\ArquitecturaDeComputadoras\Lab\Projects\P07_UC\CU\ALUControl.ncd
+OUTFILE=E:\ArquitecturaDeComputadoras\Lab\Projects\P07_UC\CU\ALUControl.bit
+FAMILY=Spartan6
+PART=xc6slx16-3csg324
+WORKINGDIR=E:\ArquitecturaDeComputadoras\Lab\Projects\P07_UC\CU
+LICENSE=WebPack
+USER_INFO=211463621_0_0_117
