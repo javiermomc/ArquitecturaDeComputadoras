@@ -72,14 +72,14 @@ begin
 	-- Used 0 for R type, 1 for I type and 2 for J type
 	with opCode select
 		ALUOp <= "000" when "000000", -- SPECIAL 
-					"001" when "100011", -- LW
-					"001" when "101011", -- SW
-					"001" when "000100", -- BEQ
+					"100" when "100011", -- LW
+					"100" when "101011", -- SW
+					"101" when "000100", -- BEQ
 					"010" when "000010", -- J
-					"001" when "001000", -- ADDI
-					"001" when "001101", -- ORI
-					"001" when "001111", -- LUI
-					"000" when others;
+					"100" when "001000", -- ADDI
+					"110" when "001101", -- ORI
+					"111" when "001111", -- LUI
+					"010" when others;
 			
 end Behavioral;
 
