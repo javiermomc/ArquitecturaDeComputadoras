@@ -191,49 +191,48 @@ begin
 	M1: ALU
 	port map();
 	
-	M1: ALUControl
+	M2: ALUControl
 	port map();
 	
-	M1: ControlUnit
+	M3: ControlUnit
 	port map();
 	
-	M1: FileReg
+	M4: FileReg
 	port map();
 	
-	M1: MUX_32bits
+	M5: MUX_32bits
 	port map();
 	
-	M1: MUX_5bits
+	M6: MUX_5bits
 	port map();
 	
-	M1: Program_counter
+	M7: Program_counter
 	port map();
 	
-	M1: RAM
+	M8: RAM
 	port map();
 	
-	M1: ROM
+	M9: ROM
 	port map();
 	
 	-- Shifter PC
-	M1: Shifter
+	M10: Shifter
 	port map();
 	
 	-- Shifter Add
-	M1: Shifter
+	M11: Shifter
 	port map();
 	
 	-- Adder PC
-	M1: Adder
+	M12: Adder
 	port map();
 	
 	-- Adder Instruction
-	M1: Adder
+	M13: Adder
 	port map();
 	
-	M1: Extender
+	M14: Extender
 	port map();
-	
 	
 	
 end Behavioral;
