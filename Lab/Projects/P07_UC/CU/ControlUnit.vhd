@@ -69,7 +69,6 @@ begin
 	RegWrite <= outBus(7);
 	
 	
-	-- Used 0 for R type, 1 for I type and 2 for J type
 	with opCode select
 		ALUOp <= "000" when "000000", -- SPECIAL 
 					"100" when "100011", -- LW
