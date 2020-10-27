@@ -115,11 +115,6 @@ component ROM
 			  INSTRUCTION : out STD_LOGIC_VECTOR(word-1 downto 0));
 end component;
 
-component ShiftL2bits
-    Port ( D : in STD_LOGIC_VECTOR (25 downto 0);
-           Q : out STD_LOGIC_VECTOR (27 downto 0));
-end component;
-
 component Shifter
     Port ( VARIN : in  STD_LOGIC_VECTOR (31 DOWNTO 0);
            VAROUT : out  STD_LOGIC_VECTOR (31 DOWNTO 0));
@@ -138,10 +133,15 @@ end component;
 
 -- PC
 signal PC : std_logic_vector(31 downto 0);
-signal PC_4 : std_logic_vector(31 downto 0);
 
--- Shift Left 2
+-- Shift Left 2 Address
 signal JumpAddress : std_logic_vector(31 downto 0);
+
+-- Shift Left 2 Instruction
+signal SL2_Result : std_logic_vector(31 downto 0);
+
+-- Sign Extend
+signal SE_Result : std_logic_vector(31 downto 0);
 
 -- Instruction Memory
 signal Instruction : std_logic_vector(31 downto 0);
@@ -161,6 +161,7 @@ signal ALUop : std_logic_vector(2 downto 0);
 signal Read_Data_1 : std_logic_vector(31 downto 0);
 signal Read_Data_2 : std_logic_vector(31 downto 0);
 signal Write_Data : std_logic_vector(31 downto 0);
+signal Write_Register : std_logic_vector(4 downto 0);
 
 -- ALU Control
 signal ALUCtrl : std_logic;
@@ -169,10 +170,71 @@ signal Jr : std_logic;
 -- ALU
 signal ALU_Result : std_logic_vector(31 downto 0);
 signal ALU_B : std_logic_vector(31 downto 0);
+signal Zero : std_logic;
 
+-- ADD PC
+signal PC_4 : std_logic_vector(31 downto 0);
+
+-- ADD Branch
+signal Add_Result : std_logic_vector(31 downto 0);
+
+-- Data Memory
+signal Read_Data : std_logic_vector(31 downto 0);
+
+-- MUX Jump
+signal MUX_Branch : std_logic_vector(31 downto 0);
+signal MUX_Jump : std_logic_vector(31 downto 0);
+signal MUX_Jr : std_logic_vector(31 downto 0);
 
 begin
 
-
+	M1: ALU
+	port map();
+	
+	M1: ALUControl
+	port map();
+	
+	M1: ControlUnit
+	port map();
+	
+	M1: FileReg
+	port map();
+	
+	M1: MUX_32bits
+	port map();
+	
+	M1: MUX_5bits
+	port map();
+	
+	M1: Program_counter
+	port map();
+	
+	M1: RAM
+	port map();
+	
+	M1: ROM
+	port map();
+	
+	-- Shifter PC
+	M1: Shifter
+	port map();
+	
+	-- Shifter Add
+	M1: Shifter
+	port map();
+	
+	-- Adder PC
+	M1: Adder
+	port map();
+	
+	-- Adder Instruction
+	M1: Adder
+	port map();
+	
+	M1: Extender
+	port map();
+	
+	
+	
 end Behavioral;
 
