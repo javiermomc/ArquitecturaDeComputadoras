@@ -30,14 +30,18 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity TOP is
-    Port ( CLK : in  STD_LOGIC;
-           RESET : in  STD_LOGIC);
+    Port ( CLK 	: in  STD_LOGIC;
+           RESET 	: in  STD_LOGIC;
+			  Instruction_Out : out  STD_LOGIC_VECTOR (31 downto 0);
+			  PC_Out 			: out  STD_LOGIC_VECTOR (31 downto 0);
+			  Write_Data_Out 	: out  STD_LOGIC_VECTOR (31 downto 0)
+			  );
 end TOP;
 
 architecture Behavioral of TOP is
 
 component ALUControl
-	Port ( Instruc : in  STD_LOGIC_VECTOR (5 downto 0);
+	Port (  Instruc : in  STD_LOGIC_VECTOR (5 downto 0);
            ALUOp : in  STD_LOGIC_VECTOR (2 downto 0);
            ALUCtrl : out  STD_LOGIC_VECTOR (2 downto 0);
 			  Jr : out STD_LOGIC);
@@ -100,7 +104,7 @@ component RAM
 	Generic ( size : integer := 32;
 				 word : integer := 32);
     Port ( ENABLE : in  STD_LOGIC;
-           ADDRESS : in  STD_LOGIC_VECTOR (size downto 0);
+           ADDRESS : in  STD_LOGIC_VECTOR (size-1 downto 0);
            CLK : in  STD_LOGIC;
            WRITE_ENABLE : in  STD_LOGIC;
            READ_ENABLE : in  STD_LOGIC;
@@ -111,13 +115,18 @@ end component;
 component ROM
 	Generic ( size : integer := 32;
 				 word : integer := 32);
-	Port	( READ_ADDRESS : in STD_LOGIC_VECTOR(size/8-1 downto 0);
+	Port	( READ_ADDRESS : in STD_LOGIC_VECTOR(size-1 downto 0);
 			  INSTRUCTION : out STD_LOGIC_VECTOR(word-1 downto 0));
 end component;
 
 component Shifter
     Port ( VARIN : in  STD_LOGIC_VECTOR (31 DOWNTO 0);
            VAROUT : out  STD_LOGIC_VECTOR (31 DOWNTO 0));
+end component;
+
+component ShiftL2bits
+    Port ( D : in STD_LOGIC_VECTOR (25 downto 0);
+           Q : out STD_LOGIC_VECTOR (27 downto 0));
 end component;
 
 component Adder
@@ -135,6 +144,7 @@ end component;
 signal PC : std_logic_vector(31 downto 0);
 
 -- Shift Left 2 Address
+signal SL_JumpAddress : std_logic_vector(27 downto 0);
 signal JumpAddress : std_logic_vector(31 downto 0);
 
 -- Shift Left 2 Instruction
@@ -164,7 +174,7 @@ signal Write_Data : std_logic_vector(31 downto 0);
 signal Write_Register : std_logic_vector(4 downto 0);
 
 -- ALU Control
-signal ALUCtrl : std_logic;
+signal ALUCtrl : std_logic_vector(2 downto 0);
 signal Jr : std_logic;
 
 -- ALU
@@ -186,53 +196,174 @@ signal MUX_Branch : std_logic_vector(31 downto 0);
 signal MUX_Jump : std_logic_vector(31 downto 0);
 signal MUX_Jr : std_logic_vector(31 downto 0);
 
+attribute keep : string;
+attribute KEEP of MUX_Jr : signal is "true";
+attribute KEEP of Read_Data : signal is "true";
+
 begin
 
 	M1: ALU
-	port map();
+	port map(	
+			A => Read_Data_1,
+         B => ALU_B,
+         Cntrl => ALUCtrl,
+         Zero => Zero,
+         Result => ALU_Result
+	);
 	
 	M2: ALUControl
-	port map();
+	port map(
+		  Instruc => Instruction(5 downto 0),
+		  ALUOp => ALUop,
+		  ALUCtrl => ALUCtrl,
+		  Jr => Jr
+	);
 	
 	M3: ControlUnit
-	port map();
+	port map(
+		  opCode => Instruction(31 downto 26),
+		  RegDst => RegDst,
+		  Jump => Jump,
+		  Branch => Branch,
+		  MemRead => MemRead,
+		  MemToReg => MemToReg,
+		  ALUOp => ALUOp,
+		  MemWrite => MemWrite,
+		  ALUSrc => ALUSrc,
+		  RegWrite => RegWrite
+	);
 	
 	M4: FileReg
-	port map();
+	port map(
+		  WriteReg => Write_Register,
+        RegWrite => RegWrite,
+        WriteData => Write_Data,
+		  CLK => CLK,
+        ReadReg1 => Instruction(25 downto 21),
+        ReadReg2 => Instruction(20 downto 16),
+        ReadOut1 => Read_Data_1,
+        ReadOut2 => Read_Data_2
+	);
 	
-	M5: MUX_32bits
-	port map();
+	M5: MUX_5bits
+	port map(
+		  D1 => Instruction(20 downto 16),
+        D2 => Instruction(15 downto 11),
+        S => RegDst,
+        Q => Write_Register
+	);
 	
-	M6: MUX_5bits
-	port map();
+	M6: Program_counter
+	port map(
+		  D => MUX_Jr,
+        Q => PC,
+        RESET => RESET,
+        CLK => CLK
+	);
 	
-	M7: Program_counter
-	port map();
+	M7: RAM
+	port map(
+		  ENABLE => '1',
+		  ADDRESS => ALU_Result,
+		  CLK => CLK,
+		  WRITE_ENABLE => MemWrite,
+		  READ_ENABLE => MemRead,
+		  WRITE_DATA => Read_Data_2,
+		  READ_DATA => Read_Data
+	);
 	
-	M8: RAM
-	port map();
+	M8: ROM
+	port map(
+		  READ_ADDRESS => PC,
+		  INSTRUCTION => Instruction
+	);
 	
-	M9: ROM
-	port map();
+	-- Shifter Address
+	M9: ShiftL2bits
+	port map(
+		  D => Instruction(25 downto 0),
+        Q => SL_JumpAddress
+	);
 	
-	-- Shifter PC
-	M10: Shifter
-	port map();
+	JumpAddress <= Instruction(31 downto 28)&SL_JumpAddress;
 	
 	-- Shifter Add
-	M11: Shifter
-	port map();
+	M10: Shifter
+	port map(
+		  VARIN => SE_Result,
+        VAROUT => SL2_Result
+	);
 	
 	-- Adder PC
-	M12: Adder
-	port map();
+	M11: Adder
+	port map(
+		  NUM1 => x"00000004",
+        NUM2 => PC,
+        SUM => PC_4
+	);
 	
 	-- Adder Instruction
-	M13: Adder
-	port map();
+	M12: Adder
+	port map(
+		  NUM1 => PC_4,
+        NUM2 => SL2_Result,
+        SUM => Add_Result
+	);
 	
-	M14: Extender
-	port map();
+	M13: Extender
+	port map(
+		  A => Instruction(15 downto 0),
+        B => SE_Result
+	);
+	
+	-- MUX ALU
+	M14: MUX_32bits
+	port map(
+		  D1 => Read_Data_2,
+        D2 => SE_Result,
+        S => ALUSrc,
+        Q => ALU_B
+	);
+	
+	-- MUX Branch
+	M15: MUX_32bits
+	port map(
+		  D1 => PC_4,
+        D2 => Add_Result,
+        S => Branch AND Zero,
+        Q => MUX_Branch
+	);
+	
+	-- MUX Jump
+	M16: MUX_32bits
+	port map(
+		  D1 => MUX_Branch,
+        D2 => JumpAddress,
+        S => Jump,
+        Q => MUX_Jump
+	);
+	
+	-- MUX Jr
+	M17: MUX_32bits
+	port map(
+		  D1 => MUX_Jump,
+        D2 => Read_Data_2,
+        S => Jr,
+        Q => MUX_Jr
+	);
+	
+	-- MUX MemToReg
+	M18: MUX_32bits
+	port map(
+		  D1 => ALU_Result,
+        D2 => Read_Data,
+        S => MemToReg,
+        Q => Write_Data
+	);
+	
+	PC_Out <= PC;
+	Write_Data_Out <= Write_Data;
+	Instruction_Out <= Instruction;
 	
 	
 end Behavioral;

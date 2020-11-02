@@ -37,7 +37,7 @@ entity RAM is
 	);
 
     Port ( ENABLE : in  STD_LOGIC;
-           ADDRESS : in  STD_LOGIC_VECTOR (size downto 0);
+           ADDRESS : in  STD_LOGIC_VECTOR (size-1 downto 0);
            CLK : in  STD_LOGIC;
            WRITE_ENABLE : in  STD_LOGIC;
            READ_ENABLE : in  STD_LOGIC;
@@ -56,10 +56,10 @@ begin
 	begin
 		if (ENABLE = '1' and falling_edge(CLK)) then
 			if (WRITE_ENABLE = '1') then 
-					RAM(to_integer(unsigned(ADDRESS))) <= WRITE_DATA;
+					RAM(to_integer(unsigned(ADDRESS(6 downto 2)))) <= WRITE_DATA;
 					READ_DATA <= (others => '0');
 			elsif (READ_ENABLE = '1') then
-				READ_DATA <= RAM(to_integer(unsigned(ADDRESS)));
+				READ_DATA <= RAM(to_integer(unsigned(ADDRESS(6 downto 2))));
 			end if;
 		end if;
 	end process;

@@ -59,14 +59,14 @@ begin
 					 "00000011" when "001111", -- LUI
 					 "00000000" when others;
 	
-	RegDst	<= outBus(0);
-	Jump		<= outBus(1);
-	Branch	<= outBus(2);
-	MemRead	<= outBus(3);
-	MemToReg <= outBus(4);
-	MemWrite <= outBus(5);
-	ALUSrc	<= outBus(6);
-	RegWrite <= outBus(7);
+	RegDst	<= outBus(7);
+	Jump		<= outBus(6);
+	Branch	<= outBus(5);
+	MemRead	<= outBus(4);
+	MemToReg <= outBus(3);
+	MemWrite <= outBus(2);
+	ALUSrc	<= outBus(1);
+	RegWrite <= outBus(0);
 	
 	
 	with opCode select
