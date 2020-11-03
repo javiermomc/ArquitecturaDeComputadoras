@@ -42,7 +42,7 @@ ARCHITECTURE behavior OF RAM_tb IS
     COMPONENT RAM
     PORT(
          ENABLE : IN  std_logic;
-         ADDRESS : IN  std_logic_vector(4 downto 0);
+         ADDRESS : IN  std_logic_vector(31 downto 0);
          CLK : IN  std_logic;
          WRITE_ENABLE : IN  std_logic;
          READ_ENABLE : IN  std_logic;
@@ -54,7 +54,7 @@ ARCHITECTURE behavior OF RAM_tb IS
 
    --Inputs
    signal ENABLE : std_logic := '0';
-   signal ADDRESS : std_logic_vector(4 downto 0) := (others => '0');
+   signal ADDRESS : std_logic_vector(31 downto 0) := (others => '0');
    signal CLK : std_logic := '0';
    signal WRITE_ENABLE : std_logic := '0';
    signal READ_ENABLE : std_logic := '0';
@@ -96,7 +96,7 @@ BEGIN
       wait for 100 ns;	
 		
 		ENABLE <= '1';
-		ADDRESS <= "00000";
+		ADDRESS <= x"00000000";
 		WRITE_ENABLE <= '1';
 		READ_ENABLE <= '0';
 		WRITE_DATA <= x"0F01A0F0";
@@ -104,7 +104,7 @@ BEGIN
       wait for CLK_period*10;
 
       ENABLE <= '1';
-		ADDRESS <= "00001";
+		ADDRESS <= x"00000004";
 		WRITE_ENABLE <= '1';
 		READ_ENABLE <= '0';
 		WRITE_DATA <= x"000A0000";
@@ -112,7 +112,7 @@ BEGIN
 		wait for CLK_period*10;
 
       ENABLE <= '1';
-		ADDRESS <= "00010";
+		ADDRESS <= x"00000008";
 		WRITE_ENABLE <= '1';
 		READ_ENABLE <= '0';
 		WRITE_DATA <= x"FFFFFFFF";
@@ -120,7 +120,7 @@ BEGIN
 		wait for CLK_period*10;
 
       ENABLE <= '1';
-		ADDRESS <= "00000";
+		ADDRESS <= x"00000000";
 		WRITE_ENABLE <= '0';
 		READ_ENABLE <= '1';
 		WRITE_DATA <= x"FFFFFFFF";
@@ -128,7 +128,7 @@ BEGIN
 		wait for CLK_period*10;
 
       ENABLE <= '1';
-		ADDRESS <= "00001";
+		ADDRESS <= x"00000004";
 		WRITE_ENABLE <= '0';
 		READ_ENABLE <= '1';
 		WRITE_DATA <= x"FFFFFFFF";
@@ -136,7 +136,7 @@ BEGIN
 		wait for CLK_period*10;
 
       ENABLE <= '1';
-		ADDRESS <= "00010";
+		ADDRESS <= x"00000008";
 		WRITE_ENABLE <= '0';
 		READ_ENABLE <= '1';
 		WRITE_DATA <= x"FFFFFFFF";
@@ -144,7 +144,7 @@ BEGIN
 		wait for CLK_period*10;
 
       ENABLE <= '1';
-		ADDRESS <= "00011";
+		ADDRESS <= x"00000011";
 		WRITE_ENABLE <= '1';
 		READ_ENABLE <= '1';
 		WRITE_DATA <= x"FFFFFFFF";
@@ -152,7 +152,7 @@ BEGIN
 		wait for CLK_period*10;
 
       ENABLE <= '1';
-		ADDRESS <= "00011";
+		ADDRESS <= x"00000011";
 		WRITE_ENABLE <= '0';
 		READ_ENABLE <= '1';
 		WRITE_DATA <= x"FFFFFFFF";
@@ -160,7 +160,7 @@ BEGIN
 		wait for CLK_period*10;
 
       ENABLE <= '1';
-		ADDRESS <= "00100";
+		ADDRESS <= x"00000100";
 		WRITE_ENABLE <= '0';
 		READ_ENABLE <= '1';
 		WRITE_DATA <= x"FFFFFFFF";
@@ -168,7 +168,7 @@ BEGIN
 		wait for CLK_period*10;
 
       ENABLE <= '0';
-		ADDRESS <= "00100";
+		ADDRESS <= x"00000100";
 		WRITE_ENABLE <= '1';
 		READ_ENABLE <= '0';
 		WRITE_DATA <= x"000aa000";
@@ -176,7 +176,7 @@ BEGIN
 		wait for CLK_period*10;
 
       ENABLE <= '0';
-		ADDRESS <= "00100";
+		ADDRESS <= x"00000100";
 		WRITE_ENABLE <= '0';
 		READ_ENABLE <= '1';
 		WRITE_DATA <= x"FFFFFFFF";
@@ -184,7 +184,7 @@ BEGIN
 		wait for CLK_period*10;
 
       ENABLE <= '1';
-		ADDRESS <= "00100";
+		ADDRESS <= x"00000100";
 		WRITE_ENABLE <= '0';
 		READ_ENABLE <= '1';
 		WRITE_DATA <= x"FFFFFFFF";

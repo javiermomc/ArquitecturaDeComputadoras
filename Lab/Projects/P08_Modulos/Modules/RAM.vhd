@@ -58,9 +58,9 @@ begin
 			if (WRITE_ENABLE = '1') then 
 					RAM(to_integer(unsigned(ADDRESS(6 downto 2)))) <= WRITE_DATA;
 					READ_DATA <= (others => '0');
-			elsif (READ_ENABLE = '1') then
-				READ_DATA <= RAM(to_integer(unsigned(ADDRESS(6 downto 2))));
 			end if;
+		elsif (ENABLE = '1' AND READ_ENABLE = '1') then
+				READ_DATA <= RAM(to_integer(unsigned(ADDRESS(6 downto 2))));
 		end if;
 	end process;
 

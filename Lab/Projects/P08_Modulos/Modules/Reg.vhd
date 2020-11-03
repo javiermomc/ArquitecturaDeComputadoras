@@ -43,7 +43,7 @@ architecture Behavioral of Reg is
 begin
 	con: for i in 1 to 31 generate
 	begin
-		DATA(i) <= WriteData when Enabler(i) = '1' AND rising_edge(CLK);
+		DATA(i) <= WriteData when Enabler(i) = '1' AND falling_edge(CLK);
    end generate;
 	DATA(0) <= (others => '0');
 	DataOut <= DATA;
