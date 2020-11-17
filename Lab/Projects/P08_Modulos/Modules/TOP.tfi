@@ -1,0 +1,13 @@
+
+
+
+// Instantiate the module
+TOP instance_name (
+    .CLK(CLK), 
+    .RESET(RESET), 
+    .Instruction_Out(Instruction_Out), 
+    .PC_Out(PC_Out), 
+    .Write_Data_Out(Write_Data_Out)
+    );
+
+
