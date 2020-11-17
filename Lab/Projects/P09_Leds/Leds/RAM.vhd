@@ -68,9 +68,8 @@ begin
 				READ_DATA <= RAM(to_integer(unsigned(ADDRESS(6 downto 2))));
 		end if;
 	end process;
-	
-	RAM(0) <= IPORT;
-	OPORT <= RAM(1);
+	RAM(1) <= IPORT;
+	OPORT <= RAM(0);
 
 
 end Behavioral;

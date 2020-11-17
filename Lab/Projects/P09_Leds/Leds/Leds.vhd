@@ -33,7 +33,7 @@ entity Leds is
     Port ( CLK : in  STD_LOGIC;
 			  RESET : in STD_LOGIC;
 			  Buttons : in STD_LOGIC_VECTOR(7 downto 0);
-           LED : out  STD_LOGIC_VECTOR (31 downto 0));
+           LED : out  STD_LOGIC_VECTOR (7 downto 0));
 end Leds;
 
 architecture Behavioral of Leds is
@@ -56,6 +56,7 @@ component Div1Hz
 end component;
 
 signal Clk_1Hz : STD_LOGIC;
+signal Led_S : STD_LOGIC_VECTOR (31 downto 0);
 
 begin
 
@@ -64,7 +65,7 @@ MIPS: TOP
 			CLK => CLK_1Hz,
          Reset => Reset,
          IPORT => x"000000" & Buttons,
-         OPORT => Led,
+         OPORT => Led_S,
          Instruction_out => open,
 			PC_Out => open,
 			Write_Data_Out => open
@@ -75,6 +76,8 @@ Freq_Divisor : Div1Hz
 		CLK_100MHz => CLK,
 		CLK_1Hz => Clk_1Hz
 	);
+	
+	Led <= LED_S(7 downto 0);
 
 end Behavioral;
 
