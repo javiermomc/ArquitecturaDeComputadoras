@@ -13,6 +13,7 @@ use IEEE.STD_LOGIC_1164.all;
 package array_port is
 
 	type port32of32 is array(31 downto 0) of STD_LOGIC_VECTOR (31 downto 0);
+	type port2of32 is array(1 downto 0) of STD_LOGIC_VECTOR (31 downto 0);
 
 end array_port;
 

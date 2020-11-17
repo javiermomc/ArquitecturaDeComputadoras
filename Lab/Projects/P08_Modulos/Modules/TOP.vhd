@@ -32,6 +32,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity TOP is
     Port ( CLK 	: in  STD_LOGIC;
            RESET 	: in  STD_LOGIC;
+			  IPORT	 			: in	 STD_LOGIC_VECTOR (31 downto 0);
+			  OPORT	 			: out	 STD_LOGIC_VECTOR (31 downto 0);
 			  Instruction_Out : out  STD_LOGIC_VECTOR (31 downto 0);
 			  PC_Out 			: out  STD_LOGIC_VECTOR (31 downto 0);
 			  Write_Data_Out 	: out  STD_LOGIC_VECTOR (31 downto 0)
@@ -109,6 +111,8 @@ component RAM
            WRITE_ENABLE : in  STD_LOGIC;
            READ_ENABLE : in  STD_LOGIC;
            WRITE_DATA : in  STD_LOGIC_VECTOR (word-1 downto 0);
+			  IPORT	 			: in	 STD_LOGIC_VECTOR (31 downto 0);
+			  OPORT	 			: out	 STD_LOGIC_VECTOR (31 downto 0);
            READ_DATA : out  STD_LOGIC_VECTOR (word-1 downto 0));
 end component;
 
@@ -199,6 +203,7 @@ signal MUX_Jr : std_logic_vector(31 downto 0);
 attribute keep : string;
 attribute KEEP of MUX_Jr : signal is "true";
 attribute KEEP of Read_Data : signal is "true";
+attribute KEEP of IPORT : signal is "true";
 
 begin
 
@@ -269,7 +274,8 @@ begin
 		  WRITE_ENABLE => MemWrite,
 		  READ_ENABLE => MemRead,
 		  WRITE_DATA => Read_Data_2,
-		  READ_DATA => Read_Data
+		  IPORT => IPort,
+		  OPORT => OPort
 	);
 	
 	M8: ROM

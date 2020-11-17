@@ -32,7 +32,7 @@ architecture Behavioral of Program_counter is
 begin
 
 	Q <= (others => '0') when RESET = '1' else
-		D when falling_edge(CLK);
+		D when rising_edge(CLK);
 
 end Behavioral;
 
