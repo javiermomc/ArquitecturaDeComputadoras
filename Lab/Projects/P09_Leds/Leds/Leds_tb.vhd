@@ -15,7 +15,7 @@
 	CLK : in  STD_LOGIC;
 	RESET : in STD_LOGIC;
 	Buttons : in STD_LOGIC_VECTOR(7 downto 0);
-	LED : out  STD_LOGIC_VECTOR (31 downto 0)
+	LED : out  STD_LOGIC_VECTOR (7 downto 0)
 			);
 	END COMPONENT;
 	
@@ -24,7 +24,7 @@
 	SIGNAL RESET : STD_LOGIC := '0';
 	SIGNAL Buttons : STD_LOGIC_VECTOR(7 downto 0);
 	--Outputs
-	SIGNAL LED :  STD_LOGIC_VECTOR (31 downto 0);
+	SIGNAL LED :  STD_LOGIC_VECTOR (7 downto 0);
 
 	-- Clock period definitions
    constant CLK_period : time := 10 ns;
@@ -54,9 +54,8 @@
 	  
 		  Reset <= '1';
 		  Buttons <= "00001000";
-        wait for 1 ns; -- wait until global set/reset completes
+        wait for 10 ns; -- wait until global set/reset completes
 		  Reset <= '0';
-		  wait for 32000 ms;
 		  
 		  
 
