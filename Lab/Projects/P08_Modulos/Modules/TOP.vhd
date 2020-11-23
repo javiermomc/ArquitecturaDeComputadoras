@@ -274,6 +274,7 @@ begin
 		  WRITE_ENABLE => MemWrite,
 		  READ_ENABLE => MemRead,
 		  WRITE_DATA => Read_Data_2,
+		  READ_DATA => Read_Data,
 		  IPORT => IPort,
 		  OPORT => OPort
 	);

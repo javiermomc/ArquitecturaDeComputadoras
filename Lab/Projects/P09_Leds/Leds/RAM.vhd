@@ -43,8 +43,8 @@ entity RAM is
            READ_ENABLE : in  STD_LOGIC;
            WRITE_DATA : in  STD_LOGIC_VECTOR (word-1 downto 0);
            READ_DATA : out  STD_LOGIC_VECTOR (word-1 downto 0);
-			  IPORT	 			: in	 STD_LOGIC_VECTOR (31 downto 0);
-			  OPORT	 			: out	 STD_LOGIC_VECTOR (31 downto 0));
+			  IPORT : in  STD_LOGIC_VECTOR (word-1 downto 0);
+			  OPORT : out  STD_LOGIC_VECTOR (word-1 downto 0));
 end RAM;
 
 architecture Behavioral of RAM is
@@ -53,12 +53,17 @@ type ram_type is array(size-1 downto 0) of STD_LOGIC_VECTOR(word-1 downto 0);
 signal RAM: ram_type;
 
 attribute keep : string;
+attribute KEEP of RAM : signal is "true";
+attribute KEEP of READ_ENABLE : signal is "true";
 attribute KEEP of IPORT : signal is "true";
+attribute KEEP of READ_DATA : signal is "true";
+attribute KEEP of ENABLE : signal is "true";
 
 begin
 
 	process (ENABLE, CLK)
 	begin
+		RAM(1) <= IPORT;
 		if (ENABLE = '1' and falling_edge(CLK)) then
 			if (WRITE_ENABLE = '1') then 
 					RAM(to_integer(unsigned(ADDRESS(6 downto 2)))) <= WRITE_DATA;
@@ -68,9 +73,7 @@ begin
 				READ_DATA <= RAM(to_integer(unsigned(ADDRESS(6 downto 2))));
 		end if;
 	end process;
-	RAM(1) <= IPORT;
+	
 	OPORT <= RAM(0);
 
-
 end Behavioral;
-

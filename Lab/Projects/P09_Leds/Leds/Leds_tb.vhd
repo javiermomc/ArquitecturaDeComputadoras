@@ -54,7 +54,7 @@
 	  
 		  Reset <= '1';
 		  Buttons <= "00001000";
-        wait for 10 ns; -- wait until global set/reset completes
+        wait for 5 ns; -- wait until global set/reset completes
 		  Reset <= '0';
 		  
 		  
