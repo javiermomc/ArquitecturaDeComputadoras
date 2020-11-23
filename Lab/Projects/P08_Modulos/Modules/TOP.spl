@@ -1,0 +1,8 @@
+[Inputs]
+CLK
+RESET
+[Outputs]
+=Instruction_Out[31:0]=
+=PC_Out[31:0]=
+=Write_Data_Out[31:0]=
+[BiDir]
