@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    08:40:18 11/17/2020 
+-- Create Date:    20:20:56 09/11/2020 
 -- Design Name: 
--- Module Name:    Freq_Divisor - Behavioral 
+-- Module Name:    Register - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -19,6 +19,7 @@
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use work.array_port.all;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -29,17 +30,22 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity Freq_Divisor is
-    Port ( CLK : in  STD_LOGIC;
-           CLK_out : out  STD_LOGIC);
-end Freq_Divisor;
+entity Reg is
+	Port ( WriteData : in STD_LOGIC_VECTOR (31 DOWNTO 0);
+			 Enabler : in STD_LOGIC_VECTOR (31 DOWNTO 0);
+			 CLK : in STD_LOGIC;
+			 DataOut : out PORT32OF32);
+			 
+end Reg;
 
-architecture Behavioral of Freq_Divisor is
-
+architecture Behavioral of Reg is
+	signal DATA : PORT32OF32;
 begin
-
-
-
-
+	con: for i in 1 to 31 generate
+	begin
+		DATA(i) <= WriteData when Enabler(i) = '1' AND falling_edge(CLK);
+   end generate;
+	DATA(0) <= (others => '0');
+	DataOut <= DATA;
 end Behavioral;
 
